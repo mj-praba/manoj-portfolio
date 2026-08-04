@@ -18,7 +18,7 @@ on:
       s3_bucket:
         required: true
       cloudfront_distribution_id:
-        required: true
+        required: false
 
 permissions:
   id-token: write
@@ -60,6 +60,7 @@ jobs:
             --cache-control "public,max-age=0,must-revalidate"
 
       - name: Invalidate CloudFront cache
+        if: ${{ secrets.cloudfront_distribution_id != '' }}
         run: |
           aws cloudfront create-invalidation \
             --distribution-id "${{ secrets.cloudfront_distribution_id }}" \

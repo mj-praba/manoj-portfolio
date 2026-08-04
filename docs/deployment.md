@@ -4,7 +4,8 @@ Each app deploys independently to its own S3 bucket + CloudFront distribution, o
 
 ## Pipeline
 
-- `.github/workflows/deploy-backend.yml` and `.github/workflows/deploy-fullstack.yml` trigger on push to `prod` (path-filtered to their app + `packages/**`, since a shared-package change can affect either build), or manually via `workflow_dispatch`. `prod` is the production branch — merge to it (from `main` or a feature branch) when you want a change live.
+- `.github/workflows/ci.yml` runs typecheck/lint/build on every PR and push to `main`, as a gate.
+- `.github/workflows/deploy-backend.yml` and `.github/workflows/deploy-fullstack.yml` trigger on push to `main` (path-filtered to their app + `packages/**`, since a shared-package change can affect either build), or manually via `workflow_dispatch`. `main` is the production branch — merging a PR into it deploys.
 - Both call the reusable workflow `.github/workflows/_deploy-static-site.yml`, which:
   1. Installs deps with pnpm and runs the app's build (`pnpm run build:backend` / `build:fullstack`).
   2. Assumes an AWS IAM role via **GitHub OIDC** (`aws-actions/configure-aws-credentials`) — no long-lived AWS access keys stored in GitHub.
@@ -28,4 +29,4 @@ The AWS resources (S3 buckets, CloudFront distributions, the GitHub OIDC provide
 
 This repo's GitHub Actions workflows only *use* that infrastructure (assume the role, sync to the bucket, invalidate the distribution) — they never create or modify it.
 
-> **Known follow-up:** the deploy roles in `mj-cloud-terraform` currently trust `refs/heads/main` in their OIDC condition. Since the deploy workflows here trigger on `prod`, that trust condition needs to be updated to `refs/heads/prod` before the AWS role can actually be assumed — tracked as a pending change in that repo, not yet applied.
+The deploy roles in `mj-cloud-terraform` trust `refs/heads/main` in their OIDC condition, matching the deploy workflows here — no branch mismatch.

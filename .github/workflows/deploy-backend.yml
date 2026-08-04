@@ -1,15 +1,9 @@
 name: Deploy web-backend
 
+# Paused: backend now deploys via GitHub Pages (deploy-backend-pages.yml) instead of
+# S3/CloudFront, to avoid AWS CloudFront's account-verification blocker. Re-enable the
+# `push` trigger below if/when moving back to the S3/CloudFront setup in mj-cloud-terraform.
 on:
-  push:
-    branches: [prod]
-    paths:
-      - 'apps/web-backend/**'
-      - 'packages/**'
-      - 'pnpm-lock.yaml'
-      - 'pnpm-workspace.yaml'
-      - '.github/workflows/deploy-backend.yml'
-      - '.github/workflows/_deploy-static-site.yml'
   workflow_dispatch:
 
 concurrency:
