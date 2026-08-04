@@ -1,0 +1,25 @@
+{
+  "name": "@manoj-portfolio/ui",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@manoj-portfolio/data": "workspace:*",
+    "@mui/icons-material": "^5.16.7",
+    "@mui/lab": "5.0.0-alpha.173",
+    "@mui/material": "^5.16.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.4"
+  }
+}

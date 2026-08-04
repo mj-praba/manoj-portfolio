@@ -1,0 +1,29 @@
+name: Deploy web-fullstack
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/web-fullstack/**'
+      - 'packages/**'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - '.github/workflows/deploy-fullstack.yml'
+      - '.github/workflows/_deploy-static-site.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-fullstack
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/_deploy-static-site.yml
+    with:
+      build_command: pnpm run build:fullstack
+      dist_path: apps/web-fullstack/dist
+      aws_region: ${{ vars.AWS_REGION }}
+    secrets:
+      aws_role_arn: ${{ secrets.AWS_ROLE_ARN_FULLSTACK }}
+      s3_bucket: ${{ secrets.S3_BUCKET_FULLSTACK }}
+      cloudfront_distribution_id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID_FULLSTACK }}
