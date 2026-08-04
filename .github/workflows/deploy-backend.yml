@@ -1,0 +1,29 @@
+name: Deploy web-backend
+
+on:
+  push:
+    branches: [prod]
+    paths:
+      - 'apps/web-backend/**'
+      - 'packages/**'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - '.github/workflows/deploy-backend.yml'
+      - '.github/workflows/_deploy-static-site.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-backend
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/_deploy-static-site.yml
+    with:
+      build_command: pnpm run build:backend
+      dist_path: apps/web-backend/dist
+      aws_region: ${{ vars.AWS_REGION }}
+    secrets:
+      aws_role_arn: ${{ secrets.AWS_ROLE_ARN_BACKEND }}
+      s3_bucket: ${{ secrets.S3_BUCKET_BACKEND }}
+      cloudfront_distribution_id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID_BACKEND }}

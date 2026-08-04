@@ -1,0 +1,66 @@
+name: Deploy static site (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      build_command:
+        required: true
+        type: string
+      dist_path:
+        required: true
+        type: string
+      aws_region:
+        required: true
+        type: string
+    secrets:
+      aws_role_arn:
+        required: true
+      s3_bucket:
+        required: true
+      cloudfront_distribution_id:
+        required: true
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: ${{ inputs.build_command }}
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.aws_role_arn }}
+          aws-region: ${{ inputs.aws_region }}
+
+      - name: Sync build output to S3
+        run: |
+          aws s3 sync "${{ inputs.dist_path }}" "s3://${{ secrets.s3_bucket }}" \
+            --delete \
+            --cache-control "public,max-age=31536000,immutable" \
+            --exclude "index.html"
+          aws s3 cp "${{ inputs.dist_path }}/index.html" "s3://${{ secrets.s3_bucket }}/index.html" \
+            --cache-control "public,max-age=0,must-revalidate"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ secrets.cloudfront_distribution_id }}" \
+            --paths "/*"
