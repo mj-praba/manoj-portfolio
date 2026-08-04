@@ -1,15 +1,11 @@
 name: Deploy web-fullstack
 
+# Paused: no AWS infra provisioned yet for web-fullstack (no S3 bucket, CloudFront
+# distribution, or deploy role — mj-cloud-terraform/sites.tf has module.site_fullstack
+# defined but never applied), and no GitHub secrets set for it. Re-enable the `push`
+# trigger once that's provisioned (or switch to a GitHub Pages-based deploy like
+# deploy-backend-pages.yml, matching web-backend).
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'apps/web-fullstack/**'
-      - 'packages/**'
-      - 'pnpm-lock.yaml'
-      - 'pnpm-workspace.yaml'
-      - '.github/workflows/deploy-fullstack.yml'
-      - '.github/workflows/_deploy-static-site.yml'
   workflow_dispatch:
 
 concurrency:
