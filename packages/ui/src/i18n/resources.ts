@@ -21,6 +21,8 @@ export const uiTranslations: Record<LocaleCode, Record<string, string>> = {
     'project.problem': 'Problem',
     'project.solution': 'Solution',
     'project.myContribution': 'My contribution',
+    'project.flipHint': 'Hover or click for the full case study',
+    'project.flipBack': 'Click to flip back',
     'footer.builtWith': 'Built with React, TypeScript & MUI.',
   },
   de: {
@@ -38,6 +40,8 @@ export const uiTranslations: Record<LocaleCode, Record<string, string>> = {
     'project.problem': 'Problem',
     'project.solution': 'Lösung',
     'project.myContribution': 'Mein Beitrag',
+    'project.flipHint': 'Für die vollständige Fallstudie klicken oder darüberfahren',
+    'project.flipBack': 'Klicken, um zurückzuklappen',
     'footer.builtWith': 'Erstellt mit React, TypeScript & MUI.',
   },
   fr: {
@@ -55,6 +59,8 @@ export const uiTranslations: Record<LocaleCode, Record<string, string>> = {
     'project.problem': 'Problème',
     'project.solution': 'Solution',
     'project.myContribution': 'Ma contribution',
+    'project.flipHint': "Survolez ou cliquez pour l'étude de cas complète",
+    'project.flipBack': 'Cliquez pour revenir',
     'footer.builtWith': 'Créé avec React, TypeScript et MUI.',
   },
 };
