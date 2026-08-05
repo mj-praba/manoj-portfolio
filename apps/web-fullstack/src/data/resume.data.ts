@@ -165,6 +165,24 @@ const en: ResumeData = {
   ],
   projects: [
     {
+      id: 'schema-aware-nl2sql-assistant',
+      name: 'Schema-Aware NL2SQL Assistant for Analytics Dashboards',
+      tagline: 'Conversational analytics on React dashboards that never sends raw data to the LLM — only the schema.',
+      businessProblem:
+        "Operators needed to ask analytics questions in plain English directly from the React dashboards instead of writing SQL or digging through reports — but sending raw tenant data to a third-party LLM was unacceptable given the platform's multi-tenant security and privacy requirements.",
+      solution:
+        'Built a Generative AI Assistant that only ever sees database schema — table names, column names, types, and relationships — never actual row data. The LLM turns a natural-language question into a candidate SQL query against that schema. Before anything executes, the query is parsed into an AST and validated against a multi-layer security model: read-only access, enforced tenant scoping, and a blocklist of dangerous SQL patterns. Validated queries execute against PostgreSQL, and results stream back over WebSockets straight into the same React dashboards used for fleet monitoring — the LLM writes the query but never touches the data it returns.',
+      myContribution: [
+        'Designed the schema-only context strategy so the LLM never receives tenant data, only structural metadata.',
+        'Built the SQL AST validation layer enforcing read-only access, tenant isolation, and a dangerous-pattern blocklist before any generated query executes.',
+        'Wired the assistant into the existing React dashboards, streaming validated query results over WebSockets in real time.',
+        'Shipped the assistant as a production feature spanning 40+ REST endpoints, alongside dual-mode execution for conversational and direct structured queries.',
+      ],
+      technologies: ['React.js', 'NestJS', 'Node.js', 'TypeScript', 'PostgreSQL', 'LLM APIs', 'NL2SQL', 'SQL AST Validation', 'WebSockets'],
+      links: [],
+      isPlaceholder: false,
+    },
+    {
       id: 'robotics-dashboard-suite',
       name: 'Robotics Fleet Dashboard Suite — Case Study Coming Soon',
       tagline: 'A detailed write-up of the React/Node.js fleet management platform is in progress.',
@@ -368,6 +386,24 @@ const de: ResumeData = {
   ],
   projects: [
     {
+      id: 'schema-aware-nl2sql-assistant',
+      name: 'Schema-basierter NL2SQL-Assistent für Analytics-Dashboards',
+      tagline: 'Dialogbasierte Analytics auf React-Dashboards, die dem LLM nie Rohdaten offenlegen — nur das Schema.',
+      businessProblem:
+        'Bediener sollten Analytics-Fragen in normalem Englisch direkt aus den React-Dashboards stellen können, statt SQL zu schreiben oder Berichte zu durchsuchen – doch das Senden von Rohdaten der Mandanten an ein Drittanbieter-LLM war angesichts der Multi-Tenant-Sicherheits- und Datenschutzanforderungen der Plattform inakzeptabel.',
+      solution:
+        'Entwickelte einen generativen KI-Assistenten, der ausschließlich das Datenbankschema sieht – Tabellennamen, Spaltennamen, Typen und Beziehungen – niemals tatsächliche Zeilendaten. Das LLM wandelt eine natürlichsprachliche Frage anhand dieses Schemas in eine SQL-Abfrage um. Bevor irgendetwas ausgeführt wird, wird die Abfrage in einen AST geparst und gegen ein mehrschichtiges Sicherheitsmodell validiert: reiner Lesezugriff, erzwungene Mandantenbegrenzung und eine Sperrliste gefährlicher SQL-Muster. Validierte Abfragen werden gegen PostgreSQL ausgeführt, und die Ergebnisse werden in Echtzeit über WebSockets direkt in dieselben React-Dashboards gestreamt, die auch für das Flotten-Monitoring genutzt werden – das LLM schreibt die Abfrage, kommt aber nie mit den zurückgegebenen Daten in Berührung.',
+      myContribution: [
+        'Entwarf die Schema-only-Kontextstrategie, sodass das LLM niemals Mandantendaten erhält, sondern nur strukturelle Metadaten.',
+        'Baute die SQL-AST-Validierungsschicht, die reinen Lesezugriff, Mandantenisolation und eine Sperrliste gefährlicher Muster durchsetzt, bevor eine generierte Abfrage ausgeführt wird.',
+        'Band den Assistenten in die bestehenden React-Dashboards ein und streamte validierte Abfrageergebnisse in Echtzeit über WebSockets.',
+        'Lieferte den Assistenten als Produktionsfeature für über 40 REST-Endpunkte aus, einschließlich Dual-Mode-Ausführung für dialogbasierte und direkte strukturierte Abfragen.',
+      ],
+      technologies: ['React.js', 'NestJS', 'Node.js', 'TypeScript', 'PostgreSQL', 'LLM APIs', 'NL2SQL', 'SQL AST Validation', 'WebSockets'],
+      links: [],
+      isPlaceholder: false,
+    },
+    {
       id: 'robotics-dashboard-suite',
       name: 'Robotik-Flotten-Dashboard-Suite — Fallstudie folgt in Kürze',
       tagline: 'Eine ausführliche Beschreibung der React/Node.js-Flottenmanagement-Plattform ist in Arbeit.',
@@ -569,6 +605,24 @@ const fr: ResumeData = {
     },
   ],
   projects: [
+    {
+      id: 'schema-aware-nl2sql-assistant',
+      name: 'Assistant NL2SQL basé sur le schéma pour tableaux de bord analytiques',
+      tagline: "Analytique conversationnelle sur des tableaux de bord React qui n'envoie jamais de données brutes au LLM — uniquement le schéma.",
+      businessProblem:
+        "Les opérateurs devaient pouvoir poser des questions analytiques en anglais courant directement depuis les tableaux de bord React plutôt que d'écrire du SQL ou de fouiller dans des rapports — mais l'envoi de données brutes des tenants à un LLM tiers était inacceptable compte tenu des exigences de sécurité et de confidentialité multi-tenant de la plateforme.",
+      solution:
+        "A développé un assistant d'IA générative qui ne voit jamais que le schéma de la base de données — noms de tables, noms de colonnes, types et relations — jamais les données de lignes réelles. Le LLM transforme une question en langage naturel en une requête SQL candidate à partir de ce schéma. Avant toute exécution, la requête est analysée en AST et validée selon un modèle de sécurité multicouche : accès en lecture seule, isolation des tenants imposée, et une liste de blocage des motifs SQL dangereux. Les requêtes validées s'exécutent sur PostgreSQL, et les résultats sont retransmis en temps réel via WebSockets directement dans les mêmes tableaux de bord React utilisés pour le suivi de la flotte — le LLM écrit la requête mais ne touche jamais aux données qu'elle retourne.",
+      myContribution: [
+        'A conçu la stratégie de contexte limité au schéma, afin que le LLM ne reçoive jamais de données des tenants, seulement des métadonnées structurelles.',
+        "A construit la couche de validation d'AST SQL imposant l'accès en lecture seule, l'isolation des tenants et une liste de blocage des motifs dangereux avant l'exécution de toute requête générée.",
+        "A intégré l'assistant aux tableaux de bord React existants, en diffusant les résultats de requêtes validées en temps réel via WebSockets.",
+        "A livré l'assistant en tant que fonctionnalité de production couvrant plus de 40 endpoints REST, avec une exécution en double mode pour les requêtes conversationnelles et structurées directes.",
+      ],
+      technologies: ['React.js', 'NestJS', 'Node.js', 'TypeScript', 'PostgreSQL', 'LLM APIs', 'NL2SQL', 'SQL AST Validation', 'WebSockets'],
+      links: [],
+      isPlaceholder: false,
+    },
     {
       id: 'robotics-dashboard-suite',
       name: 'Suite de tableaux de bord pour flotte robotique — Étude de cas à venir',

@@ -147,6 +147,24 @@ const en: ResumeData = {
   ],
   projects: [
     {
+      id: 'schema-aware-nl2sql-assistant',
+      name: 'Schema-Aware NL2SQL Assistant for Analytics Dashboards',
+      tagline: 'A conversational interface to 40+ REST endpoints that never exposes raw data to the LLM — only the schema.',
+      businessProblem:
+        "A multi-tenant robotics SaaS platform needed a natural-language interface so operators could ask analytics questions in plain English instead of writing SQL or navigating dashboards — but sending raw tenant data to a third-party LLM was unacceptable given the platform's multi-tenant security and privacy requirements.",
+      solution:
+        'Built a Generative AI Assistant that only ever sees database schema — table names, column names, types, and relationships — never actual row data. The LLM turns a natural-language question into a candidate SQL query against that schema. Before anything executes, the query is parsed into an AST and run through a multi-layer validation model: read-only operations, enforced tenant scoping, and a blocklist of dangerous SQL patterns, so a prompt-injected or malformed query can never reach the database. Validated queries execute directly against PostgreSQL, and results stream back over WebSockets in real time — the LLM writes the query but never touches the data it returns.',
+      myContribution: [
+        'Designed the schema-only context strategy so the LLM never receives tenant data, only structural metadata.',
+        'Built the SQL AST validation layer enforcing read-only access, tenant isolation, and a dangerous-pattern blocklist before any generated query executes.',
+        'Implemented dual-mode execution (conversational assistant vs. direct structured queries) inside the existing NestJS backend.',
+        'Added real-time WebSocket streaming for query results, and shipped the assistant as a production feature spanning 40+ REST endpoints.',
+      ],
+      technologies: ['NestJS', 'Node.js', 'TypeScript', 'PostgreSQL', 'LLM APIs', 'NL2SQL', 'SQL AST Validation', 'WebSockets', 'Multi-Tenant RBAC'],
+      links: [],
+      isPlaceholder: false,
+    },
+    {
       id: 'robotics-saas-platform',
       name: 'Robotics SaaS Platform — Case Study Coming Soon',
       tagline: 'A detailed write-up of the multi-tenant backend architecture is in progress.',
@@ -332,6 +350,24 @@ const de: ResumeData = {
   ],
   projects: [
     {
+      id: 'schema-aware-nl2sql-assistant',
+      name: 'Schema-basierter NL2SQL-Assistent für Analytics-Dashboards',
+      tagline: 'Eine dialogbasierte Schnittstelle zu über 40 REST-Endpunkten, die dem LLM nie Rohdaten offenlegt — nur das Schema.',
+      businessProblem:
+        'Eine Multi-Tenant-SaaS-Plattform für Robotik benötigte eine natürlichsprachliche Schnittstelle, damit Bediener Analytics-Fragen in normalem Englisch stellen konnten, statt SQL zu schreiben oder Dashboards zu navigieren – doch das Senden von Rohdaten der Mandanten an ein Drittanbieter-LLM war angesichts der Multi-Tenant-Sicherheits- und Datenschutzanforderungen inakzeptabel.',
+      solution:
+        'Entwickelte einen generativen KI-Assistenten, der ausschließlich das Datenbankschema sieht – Tabellennamen, Spaltennamen, Typen und Beziehungen – niemals tatsächliche Zeilendaten. Das LLM wandelt eine natürlichsprachliche Frage anhand dieses Schemas in eine SQL-Abfrage um. Bevor irgendetwas ausgeführt wird, wird die Abfrage in einen AST geparst und durchläuft ein mehrschichtiges Validierungsmodell: reiner Lesezugriff, erzwungene Mandantenbegrenzung und eine Sperrliste gefährlicher SQL-Muster – sodass eine durch Prompt-Injection manipulierte oder fehlerhafte Abfrage niemals die Datenbank erreichen kann. Validierte Abfragen werden direkt gegen PostgreSQL ausgeführt, und die Ergebnisse werden in Echtzeit über WebSockets zurückgestreamt – das LLM schreibt die Abfrage, kommt aber nie mit den zurückgegebenen Daten in Berührung.',
+      myContribution: [
+        'Entwarf die Schema-only-Kontextstrategie, sodass das LLM niemals Mandantendaten erhält, sondern nur strukturelle Metadaten.',
+        'Baute die SQL-AST-Validierungsschicht, die reinen Lesezugriff, Mandantenisolation und eine Sperrliste gefährlicher Muster durchsetzt, bevor eine generierte Abfrage ausgeführt wird.',
+        'Implementierte Dual-Mode-Ausführung (dialogbasierter Assistent vs. direkte strukturierte Abfragen) im bestehenden NestJS-Backend.',
+        'Fügte Echtzeit-WebSocket-Streaming für Abfrageergebnisse hinzu und lieferte den Assistenten als Produktionsfeature für über 40 REST-Endpunkte aus.',
+      ],
+      technologies: ['NestJS', 'Node.js', 'TypeScript', 'PostgreSQL', 'LLM APIs', 'NL2SQL', 'SQL AST Validation', 'WebSockets', 'Multi-Tenant RBAC'],
+      links: [],
+      isPlaceholder: false,
+    },
+    {
       id: 'robotics-saas-platform',
       name: 'Robotik-SaaS-Plattform — Fallstudie folgt in Kürze',
       tagline: 'Eine ausführliche Beschreibung der Multi-Tenant-Backend-Architektur ist in Arbeit.',
@@ -515,6 +551,24 @@ const fr: ResumeData = {
     },
   ],
   projects: [
+    {
+      id: 'schema-aware-nl2sql-assistant',
+      name: 'Assistant NL2SQL basé sur le schéma pour tableaux de bord analytiques',
+      tagline: "Une interface conversationnelle pour plus de 40 endpoints REST qui n'expose jamais de données brutes au LLM — uniquement le schéma.",
+      businessProblem:
+        "Une plateforme SaaS multi-tenant pour la robotique avait besoin d'une interface en langage naturel permettant aux opérateurs de poser des questions analytiques en anglais courant plutôt que d'écrire du SQL ou de naviguer dans des tableaux de bord — mais l'envoi de données brutes des tenants à un LLM tiers était inacceptable compte tenu des exigences de sécurité et de confidentialité multi-tenant.",
+      solution:
+        "A développé un assistant d'IA générative qui ne voit jamais que le schéma de la base de données — noms de tables, noms de colonnes, types et relations — jamais les données de lignes réelles. Le LLM transforme une question en langage naturel en une requête SQL candidate à partir de ce schéma. Avant toute exécution, la requête est analysée en AST et passe par un modèle de validation multicouche : accès en lecture seule, isolation des tenants imposée, et une liste de blocage des motifs SQL dangereux — de sorte qu'une requête corrompue par injection de prompt ou malformée ne puisse jamais atteindre la base de données. Les requêtes validées s'exécutent directement sur PostgreSQL, et les résultats sont retransmis en temps réel via WebSockets — le LLM écrit la requête mais ne touche jamais aux données qu'elle retourne.",
+      myContribution: [
+        'A conçu la stratégie de contexte limité au schéma, afin que le LLM ne reçoive jamais de données des tenants, seulement des métadonnées structurelles.',
+        "A construit la couche de validation d'AST SQL imposant l'accès en lecture seule, l'isolation des tenants et une liste de blocage des motifs dangereux avant l'exécution de toute requête générée.",
+        "A implémenté une exécution en double mode (assistant conversationnel vs requêtes structurées directes) au sein du backend NestJS existant.",
+        "A ajouté un streaming WebSocket en temps réel pour les résultats de requêtes, et a livré l'assistant en tant que fonctionnalité de production couvrant plus de 40 endpoints REST.",
+      ],
+      technologies: ['NestJS', 'Node.js', 'TypeScript', 'PostgreSQL', 'LLM APIs', 'NL2SQL', 'SQL AST Validation', 'WebSockets', 'Multi-Tenant RBAC'],
+      links: [],
+      isPlaceholder: false,
+    },
     {
       id: 'robotics-saas-platform',
       name: 'Plateforme SaaS pour la robotique — Étude de cas à venir',
