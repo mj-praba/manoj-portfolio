@@ -62,18 +62,15 @@ export interface NavItem {
 }
 
 export interface RecruiterModeConfig {
-  readonly label: string;
-  readonly description: string;
   readonly condensedSectionIds: readonly string[];
 }
 
-export type LocaleCode = 'en' | 'ta' | 'hi' | 'de' | 'fr' | 'ja';
+export type LocaleCode = 'en' | 'de' | 'fr';
 
 export interface LanguageOption {
   readonly code: LocaleCode;
   readonly nativeLabel: string;
   readonly englishLabel: string;
-  readonly available: boolean;
 }
 
 export interface ResumeData {

@@ -1,4 +1,5 @@
 import { Box, Grid, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import type { WorkWithMeInfo } from '@manoj-portfolio/data';
 import { TimezoneOverlapWidget } from './TimezoneOverlapWidget';
 
@@ -7,6 +8,7 @@ export interface WorkWithMeSectionProps {
 }
 
 export function WorkWithMeSection({ info }: WorkWithMeSectionProps) {
+  const { t } = useTranslation();
   return (
     // Grid must be a block-level child, not a flex item (Stack) — MUI's legacy Grid negative-margin
     // spacing math breaks inside a flex container, overflowing the viewport on narrow screens.
@@ -20,7 +22,7 @@ export function WorkWithMeSection({ info }: WorkWithMeSectionProps) {
           <Stack spacing={2.5}>
             <Stack spacing={0.5}>
               <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
-                Based in
+                {t('workWithMe.basedIn')}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {info.baseLocation}
@@ -28,7 +30,7 @@ export function WorkWithMeSection({ info }: WorkWithMeSectionProps) {
             </Stack>
             <Stack spacing={0.5}>
               <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
-                Availability
+                {t('workWithMe.availability')}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {info.remoteAvailability}
@@ -36,7 +38,7 @@ export function WorkWithMeSection({ info }: WorkWithMeSectionProps) {
             </Stack>
             <Stack spacing={0.5}>
               <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
-                Engagement
+                {t('workWithMe.engagement')}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {info.preferredEngagements.join(' · ')}
