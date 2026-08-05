@@ -171,4 +171,42 @@ export const resumeData: ResumeData = {
       year: '2019',
     },
   ],
+  projects: [
+    {
+      id: 'robotics-dashboard-suite',
+      name: 'Robotics Fleet Dashboard Suite — Case Study Coming Soon',
+      tagline: 'A detailed write-up of the React/Node.js fleet management platform is in progress.',
+      businessProblem: 'Full write-up in progress — check back soon.',
+      solution: 'Full write-up in progress — check back soon.',
+      myContribution: ['Write-up in progress.'],
+      technologies: [],
+      links: [],
+      isPlaceholder: true,
+      placeholderNote:
+        'This project card is a placeholder. A full case study (problem, solution, my contribution, and links) will be added here.',
+    },
+    {
+      id: 'analytics-web-app',
+      name: 'Enterprise Analytics Web App — Case Study Coming Soon',
+      tagline: 'A detailed write-up of the end-to-end analytics product is in progress.',
+      businessProblem: 'Full write-up in progress — check back soon.',
+      solution: 'Full write-up in progress — check back soon.',
+      myContribution: ['Write-up in progress.'],
+      technologies: [],
+      links: [],
+      isPlaceholder: true,
+      placeholderNote:
+        'This project card is a placeholder. A full case study (problem, solution, my contribution, and links) will be added here.',
+    },
+  ],
+  workWithMe: {
+    headline: "Let's work together",
+    baseLocation: 'Chennai, India (IST, UTC+5:30)',
+    baseTimezone: 'Asia/Kolkata',
+    remoteAvailability: 'Open to remote roles worldwide',
+    preferredEngagements: ['Full-time', 'Contract'],
+    fallbackTimezoneNote: 'Based in India (IST, UTC+5:30) — available worldwide for remote collaboration.',
+  },
+  // TODO: add a real CV PDF under apps/web-fullstack/public/cv/ and set this to its path.
+  cvUrl: undefined,
 };
