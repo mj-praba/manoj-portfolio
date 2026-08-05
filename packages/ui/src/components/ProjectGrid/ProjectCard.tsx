@@ -1,4 +1,5 @@
 import { Box, Card, CardContent, Chip, Link, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import type { Project } from '@manoj-portfolio/data';
 
 export interface ProjectCardProps {
@@ -6,6 +7,7 @@ export interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const { t } = useTranslation();
   if (project.isPlaceholder) {
     return (
       <Card
@@ -20,7 +22,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
       >
         <CardContent>
           <Stack spacing={1.5}>
-            <Chip label="Case study coming soon" color="warning" size="small" sx={{ alignSelf: 'flex-start' }} />
+            <Chip
+              label={t('project.caseStudyComingSoon')}
+              color="warning"
+              size="small"
+              sx={{ alignSelf: 'flex-start' }}
+            />
             <Typography variant="h6" component="h3">
               {project.name}
             </Typography>
@@ -48,7 +55,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
           <Box>
             <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
-              Problem
+              {t('project.problem')}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {project.businessProblem}
@@ -57,7 +64,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
           <Box>
             <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
-              Solution
+              {t('project.solution')}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {project.solution}
@@ -67,7 +74,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.myContribution.length > 0 && (
             <Box>
               <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
-                My contribution
+                {t('project.myContribution')}
               </Typography>
               <Stack component="ul" spacing={0.5} sx={{ pl: 2.5, m: 0 }}>
                 {project.myContribution.map((item) => (

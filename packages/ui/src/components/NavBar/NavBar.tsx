@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   AppBar,
   Box,
@@ -32,6 +33,7 @@ function prefersReducedMotion(): boolean {
 }
 
 export function NavBar({ brand, links, utilities }: NavBarProps) {
+  const { t } = useTranslation();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const scrollTo = (id: string) => {
@@ -61,7 +63,7 @@ export function NavBar({ brand, links, utilities }: NavBarProps) {
             )}
 
             <IconButton
-              aria-label="Open navigation menu"
+              aria-label={t('nav.openMenu')}
               edge="end"
               onClick={() => setDrawerOpen(true)}
               sx={{ display: { xs: 'inline-flex', md: 'none' } }}

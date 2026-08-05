@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Chip, IconButton, ListItemText, Menu, MenuItem, Tooltip } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import { IconButton, ListItemText, Menu, MenuItem, Tooltip } from '@mui/material';
 import TranslateIcon from '@mui/icons-material/Translate';
 import type { LanguageOption, LocaleCode } from '@manoj-portfolio/data';
 
@@ -10,6 +11,7 @@ export interface LanguageSwitcherProps {
 }
 
 export function LanguageSwitcher({ options, currentLocale, onLocaleChange }: LanguageSwitcherProps) {
+  const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
 
@@ -20,9 +22,9 @@ export function LanguageSwitcher({ options, currentLocale, onLocaleChange }: Lan
 
   return (
     <>
-      <Tooltip title="Change language">
+      <Tooltip title={t('language.change')}>
         <IconButton
-          aria-label="Change language"
+          aria-label={t('language.change')}
           aria-haspopup="menu"
           aria-expanded={open}
           color="inherit"
@@ -37,7 +39,6 @@ export function LanguageSwitcher({ options, currentLocale, onLocaleChange }: Lan
             <ListItemText
               primary={option.code === 'en' ? option.nativeLabel : `${option.nativeLabel} (${option.englishLabel})`}
             />
-            {!option.available && <Chip label="Coming soon" size="small" sx={{ ml: 1.5 }} />}
           </MenuItem>
         ))}
       </Menu>

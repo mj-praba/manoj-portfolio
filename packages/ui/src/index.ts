@@ -18,12 +18,10 @@ export type { ProjectCardProps } from './components/ProjectGrid/ProjectCard';
 
 export { useLocale } from './i18n/useLocale';
 export type { UseLocaleResult } from './i18n/useLocale';
+export { uiTranslations } from './i18n/resources';
 
 export { LanguageSwitcher } from './components/LanguageSwitcher/LanguageSwitcher';
 export type { LanguageSwitcherProps } from './components/LanguageSwitcher/LanguageSwitcher';
-
-export { ComingSoonLocaleBanner } from './components/ComingSoonLocaleBanner/ComingSoonLocaleBanner';
-export type { ComingSoonLocaleBannerProps } from './components/ComingSoonLocaleBanner/ComingSoonLocaleBanner';
 
 export { useTimezoneOverlap } from './hooks/useTimezoneOverlap';
 export type { GeoLookupState } from './hooks/useTimezoneOverlap';

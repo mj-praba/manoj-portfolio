@@ -1,4 +1,5 @@
 import { Skeleton, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { useTimezoneOverlap } from '../../hooks/useTimezoneOverlap';
 
 export interface TimezoneOverlapWidgetProps {
@@ -8,19 +9,20 @@ export interface TimezoneOverlapWidgetProps {
 }
 
 export function TimezoneOverlapWidget({ baseTimezone, baseLabel, fallbackNote }: TimezoneOverlapWidgetProps) {
+  const { t } = useTranslation();
   const state = useTimezoneOverlap(baseTimezone);
 
   return (
     <Stack spacing={1}>
       <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
-        Timezone overlap
+        {t('workWithMe.timezoneOverlap')}
       </Typography>
 
       {state.status === 'loading' && <Skeleton variant="text" width="80%" />}
 
       {state.status === 'success' && (
         <Typography variant="body2" color="text.secondary">
-          {state.overlapSummary} (I&apos;m based in {baseLabel}.)
+          {state.overlapSummary} {t('workWithMe.basedInSuffix', { location: baseLabel })}
         </Typography>
       )}
 
@@ -31,7 +33,7 @@ export function TimezoneOverlapWidget({ baseTimezone, baseLabel, fallbackNote }:
       )}
 
       <Typography variant="caption" color="text.secondary">
-        Estimated from your IP address — no location permission requested.
+        {t('workWithMe.ipEstimateNote')}
       </Typography>
     </Stack>
   );

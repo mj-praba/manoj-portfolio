@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import { Button, Tooltip } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import {
   AchievementList,
-  ComingSoonLocaleBanner,
   ContactLinks,
   EducationList,
   ExperienceTimeline,
@@ -19,16 +19,8 @@ import {
   useRecruiterMode,
   WorkWithMeSection,
 } from '@manoj-portfolio/ui';
-import { resumeData } from './data/resume.data';
-import { languageOptions, recruiterMode } from './data/portfolio.config';
-
-const NAV_LINKS = [
-  { id: 'experience', label: 'Experience' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'workwithme', label: 'Work With Me' },
-  { id: 'contact', label: 'Contact' },
-] as const;
+import { resumeDataByLocale } from './data/resume.data';
+import { languageOptions, navItems, recruiterMode } from './data/portfolio.config';
 
 interface SectionDescriptor {
   readonly id: string;
@@ -37,9 +29,12 @@ interface SectionDescriptor {
 }
 
 export function App() {
+  const { t } = useTranslation();
   const { locale, setLocale } = useLocale();
-  const activeLanguage = languageOptions.find((option) => option.code === locale);
   const { isRecruiterMode, toggle: toggleRecruiterMode } = useRecruiterMode();
+  const resumeData = resumeDataByLocale[locale];
+
+  const navLinks = navItems.map((item) => ({ id: item.id, label: t(item.labelKey, item.label) }));
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -51,13 +46,13 @@ export function App() {
     : resumeData.projects;
 
   const allSections: readonly SectionDescriptor[] = [
-    { id: 'experience', title: 'Experience', content: <ExperienceTimeline entries={resumeData.experience} /> },
-    { id: 'projects', title: 'Projects', content: <ProjectGrid projects={visibleProjects} /> },
-    { id: 'skills', title: 'Skills', content: <SkillGroup categories={resumeData.skillCategories} /> },
-    { id: 'achievements', title: 'Achievements', content: <AchievementList achievements={resumeData.achievements} /> },
-    { id: 'education', title: 'Education', content: <EducationList entries={resumeData.education} /> },
-    { id: 'workwithme', title: 'Work With Me', content: <WorkWithMeSection info={resumeData.workWithMe} /> },
-    { id: 'contact', title: 'Contact', content: <ContactLinks contact={resumeData.contact} /> },
+    { id: 'experience', title: t('nav.experience'), content: <ExperienceTimeline entries={resumeData.experience} /> },
+    { id: 'projects', title: t('nav.projects'), content: <ProjectGrid projects={visibleProjects} /> },
+    { id: 'skills', title: t('nav.skills'), content: <SkillGroup categories={resumeData.skillCategories} /> },
+    { id: 'achievements', title: t('section.achievements'), content: <AchievementList achievements={resumeData.achievements} /> },
+    { id: 'education', title: t('section.education'), content: <EducationList entries={resumeData.education} /> },
+    { id: 'workwithme', title: t('nav.workwithme'), content: <WorkWithMeSection info={resumeData.workWithMe} /> },
+    { id: 'contact', title: t('nav.contact'), content: <ContactLinks contact={resumeData.contact} /> },
   ];
 
   // Drop 'projects' from the condensed view entirely when there are no finished case studies to show —
@@ -77,24 +72,20 @@ export function App() {
     <>
       <NavBar
         brand={resumeData.name}
-        links={NAV_LINKS}
+        links={navLinks}
         utilities={
           <>
             <RecruiterModeToggle
               pressed={isRecruiterMode}
               onToggle={toggleRecruiterMode}
-              label={recruiterMode.label}
-              description={recruiterMode.description}
+              label={t('recruiterMode.label')}
+              description={t('recruiterMode.description')}
             />
             <LanguageSwitcher options={languageOptions} currentLocale={locale} onLocaleChange={setLocale} />
             <ThemeModeToggle />
           </>
         }
       />
-
-      {activeLanguage && !activeLanguage.available && (
-        <ComingSoonLocaleBanner language={activeLanguage} onSwitchBack={() => setLocale('en')} />
-      )}
 
       <Hero
         name={resumeData.name}
@@ -104,17 +95,17 @@ export function App() {
         actions={
           <>
             <Button variant="contained" size="large" onClick={scrollToContact}>
-              Get in touch
+              {t('hero.getInTouch')}
             </Button>
             {resumeData.cvUrl ? (
               <Button variant="outlined" size="large" href={resumeData.cvUrl} target="_blank" rel="noopener noreferrer">
-                Download CV
+                {t('hero.downloadCV')}
               </Button>
             ) : (
-              <Tooltip title="CV coming soon">
+              <Tooltip title={t('hero.cvComingSoon')}>
                 <span>
                   <Button variant="outlined" size="large" disabled>
-                    Download CV
+                    {t('hero.downloadCV')}
                   </Button>
                 </span>
               </Tooltip>
