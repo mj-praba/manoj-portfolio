@@ -3,7 +3,7 @@ import type { LocaleCode, ResumeData } from '@manoj-portfolio/data';
 const en: ResumeData = {
   name: 'Manoj Prabahar J',
   title: 'Backend Engineer',
-  tagline: 'Open to Remote Roles',
+  tagline: 'Node.js · TypeScript · AWS · Terraform',
   summary:
     'Backend Engineer with nearly 4 years of experience designing and building distributed, event-driven backend systems and multi-tenant SaaS platforms for fast-moving startup environments. Skilled in developing scalable backend services, real-time telemetry processing pipelines, and cloud-native systems using Node.js, TypeScript, AWS, and Terraform, with strong async communication and self-directed ownership. Proven track record as a founding engineer taking backend systems from concept to production.',
   contact: {
@@ -188,7 +188,7 @@ const en: ResumeData = {
 const de: ResumeData = {
   name: 'Manoj Prabahar J',
   title: 'Backend-Entwickler',
-  tagline: 'Offen für Remote-Positionen',
+  tagline: 'Node.js · TypeScript · AWS · Terraform',
   summary:
     'Backend-Entwickler mit knapp 4 Jahren Erfahrung in der Konzeption und Entwicklung verteilter, ereignisgesteuerter Backend-Systeme und Multi-Tenant-SaaS-Plattformen für schnelllebige Startup-Umgebungen. Erfahren in der Entwicklung skalierbarer Backend-Services, Echtzeit-Telemetrie-Verarbeitungspipelines und Cloud-nativer Systeme mit Node.js, TypeScript, AWS und Terraform, mit ausgeprägter asynchroner Kommunikation und eigenverantwortlicher Arbeitsweise. Nachgewiesene Erfolgsbilanz als Gründungsingenieur, der Backend-Systeme von der Konzeption bis zur Produktion führt.',
   contact: {
@@ -372,7 +372,7 @@ const de: ResumeData = {
 const fr: ResumeData = {
   name: 'Manoj Prabahar J',
   title: 'Ingénieur Backend',
-  tagline: 'Ouvert aux postes à distance',
+  tagline: 'Node.js · TypeScript · AWS · Terraform',
   summary:
     "Ingénieur Backend avec près de 4 ans d'expérience dans la conception et le développement de systèmes backend distribués et événementiels, ainsi que de plateformes SaaS multi-tenant, pour des environnements de start-up en constante évolution. Compétent dans le développement de services backend évolutifs, de pipelines de traitement de télémétrie en temps réel et de systèmes cloud-natifs avec Node.js, TypeScript, AWS et Terraform, avec une solide communication asynchrone et une grande autonomie. Expérience avérée en tant qu'ingénieur fondateur, menant des systèmes backend de la conception à la mise en production.",
   contact: {
