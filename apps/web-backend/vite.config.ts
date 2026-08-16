@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(() => ({
   plugins: [react()],
   server: { port: 5173 },
-  // Served at mj-praba.github.io/manoj-portfolio/ (project page, no custom domain yet) —
-  // asset URLs need the repo-name prefix, but the local dev server should stay at root.
-  base: command === 'build' ? '/manoj-portfolio/' : '/',
+  // Served at custom domain phoenix.is-a.dev, at root — no repo-name prefix needed.
+  base: '/',
 }));
