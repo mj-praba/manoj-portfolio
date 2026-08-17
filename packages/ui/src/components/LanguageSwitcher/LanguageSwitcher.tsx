@@ -36,9 +36,7 @@ export function LanguageSwitcher({ options, currentLocale, onLocaleChange }: Lan
       <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)}>
         {options.map((option) => (
           <MenuItem key={option.code} selected={option.code === currentLocale} onClick={() => handleSelect(option.code)}>
-            <ListItemText
-              primary={option.code === 'en' ? option.nativeLabel : `${option.nativeLabel} (${option.englishLabel})`}
-            />
+            <ListItemText primary={option.nativeLabel} />
           </MenuItem>
         ))}
       </Menu>

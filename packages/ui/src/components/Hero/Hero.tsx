@@ -34,7 +34,11 @@ export function Hero({ name, title, tagline, summary, actions }: HeroProps) {
           <Typography
             variant="body1"
             color="text.secondary"
-            sx={{ maxWidth: 720, fontSize: { xs: '1rem', md: '1.1rem' } }}
+            sx={{
+              maxWidth: { xs: '100%', sm: 640, md: 760, lg: 900, xl: 1000 },
+              fontSize: { xs: '1rem', md: '1.1rem' },
+              textWrap: 'pretty',
+            }}
           >
             {summary}
           </Typography>

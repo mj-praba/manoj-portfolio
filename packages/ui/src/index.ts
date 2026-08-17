@@ -23,20 +23,6 @@ export { uiTranslations } from './i18n/resources';
 export { LanguageSwitcher } from './components/LanguageSwitcher/LanguageSwitcher';
 export type { LanguageSwitcherProps } from './components/LanguageSwitcher/LanguageSwitcher';
 
-export { useTimezoneOverlap } from './hooks/useTimezoneOverlap';
-export type { GeoLookupState } from './hooks/useTimezoneOverlap';
-
-export { WorkWithMeSection } from './components/WorkWithMe/WorkWithMeSection';
-export type { WorkWithMeSectionProps } from './components/WorkWithMe/WorkWithMeSection';
-export { TimezoneOverlapWidget } from './components/WorkWithMe/TimezoneOverlapWidget';
-export type { TimezoneOverlapWidgetProps } from './components/WorkWithMe/TimezoneOverlapWidget';
-
-export { useRecruiterMode } from './hooks/useRecruiterMode';
-export type { UseRecruiterModeResult } from './hooks/useRecruiterMode';
-
-export { RecruiterModeToggle } from './components/RecruiterModeToggle/RecruiterModeToggle';
-export type { RecruiterModeToggleProps } from './components/RecruiterModeToggle/RecruiterModeToggle';
-
 export { Hero } from './components/Hero/Hero';
 export type { HeroProps } from './components/Hero/Hero';
 
