@@ -24,7 +24,7 @@ export interface NavLink {
 export interface NavBarProps {
   readonly brand: string;
   readonly links: readonly NavLink[];
-  /** Extra controls (theme toggle, language switcher, recruiter mode, etc.) rendered alongside the nav links. */
+  /** Extra controls (theme toggle, language switcher, etc.) rendered alongside the nav links. */
   readonly utilities?: ReactNode;
 }
 

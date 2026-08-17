@@ -42,7 +42,25 @@ export function createPortfolioTheme(accentColor: string, mode: ThemeMode = 'lig
     },
     components: {
       MuiContainer: {
-        defaultProps: { maxWidth: 'md' },
+        defaultProps: { maxWidth: false },
+        styleOverrides: {
+          root: ({ theme: t }) => ({
+            width: '100%',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            paddingLeft: t.spacing(2),
+            paddingRight: t.spacing(2),
+            [t.breakpoints.up('sm')]: {
+              paddingLeft: t.spacing(3),
+              paddingRight: t.spacing(3),
+              maxWidth: 600,
+            },
+            [t.breakpoints.up('md')]: { maxWidth: 900 },
+            [t.breakpoints.up('lg')]: { maxWidth: 1200 },
+            [t.breakpoints.up('xl')]: { maxWidth: 1440 },
+            '@media (min-width:1920px)': { maxWidth: 1600 },
+          }),
+        },
       },
       MuiCssBaseline: {
         styleOverrides: {

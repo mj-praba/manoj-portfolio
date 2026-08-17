@@ -45,24 +45,10 @@ export interface Project {
   readonly placeholderNote?: string;
 }
 
-export interface WorkWithMeInfo {
-  readonly headline: string;
-  readonly baseLocation: string;
-  /** IANA timezone id, e.g. "Asia/Kolkata" */
-  readonly baseTimezone: string;
-  readonly remoteAvailability: string;
-  readonly preferredEngagements: readonly string[];
-  readonly fallbackTimezoneNote: string;
-}
-
 export interface NavItem {
   readonly id: string;
   readonly labelKey: string;
   readonly label: string;
-}
-
-export interface RecruiterModeConfig {
-  readonly condensedSectionIds: readonly string[];
 }
 
 export type LocaleCode = 'en' | 'de' | 'fr';
@@ -70,7 +56,6 @@ export type LocaleCode = 'en' | 'de' | 'fr';
 export interface LanguageOption {
   readonly code: LocaleCode;
   readonly nativeLabel: string;
-  readonly englishLabel: string;
 }
 
 export interface ResumeData {
@@ -84,6 +69,4 @@ export interface ResumeData {
   readonly achievements: readonly Achievement[];
   readonly education: readonly EducationEntry[];
   readonly projects: readonly Project[];
-  readonly workWithMe: WorkWithMeInfo;
-  readonly cvUrl?: string;
 }
