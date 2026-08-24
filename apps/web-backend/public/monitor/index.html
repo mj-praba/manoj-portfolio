@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Monitoring Platform — Architecture &amp; Install Docs</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232f6fed'/%3E%3Ctext x='16' y='22' font-family='Arial, sans-serif' font-size='16' font-weight='700' fill='white' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E"
+    />
+    <meta
+      name="description"
+      content="Architecture overview and Windows/Linux install guide for the Monitoring Platform's backend, dashboard, and desktop apps."
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-alt: #f5f7fb;
+        --text: #1a1f2b;
+        --muted: #5b6472;
+        --border: #e3e7ef;
+        --accent: #2f6fed;
+        --code-bg: #10131a;
+        --code-text: #e6e9f0;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #10131a;
+          --bg-alt: #171b24;
+          --text: #eef1f6;
+          --muted: #9aa3b2;
+          --border: #262b36;
+          --accent: #6d9bff;
+          --code-bg: #05070b;
+          --code-text: #dfe4ee;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      header.hero {
+        padding: 3rem 1.5rem 2rem;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+      }
+      header.hero h1 {
+        margin: 0 0 0.5rem;
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+      }
+      header.hero p {
+        margin: 0 auto;
+        max-width: 40rem;
+        color: var(--muted);
+      }
+      header.hero a.back {
+        display: inline-block;
+        margin-top: 1.25rem;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      main {
+        max-width: 48rem;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem 4rem;
+      }
+      section { margin-bottom: 2.75rem; }
+      h2 {
+        font-size: 1.4rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.5rem;
+      }
+      h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+      .card {
+        background: var(--bg-alt);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+      code {
+        background: var(--code-bg);
+        color: var(--code-text);
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.9em;
+      }
+      pre {
+        background: var(--code-bg);
+        color: var(--code-text);
+        padding: 0.9rem 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      pre code { background: none; padding: 0; }
+      a.button {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.6rem 1.1rem;
+        border-radius: 8px;
+        margin-top: 0.5rem;
+      }
+      ul { padding-left: 1.25rem; }
+      .muted { color: var(--muted); font-size: 0.95rem; }
+      footer {
+        text-align: center;
+        color: var(--muted);
+        padding: 2rem 1.5rem 3rem;
+        font-size: 0.9rem;
+      }
+      footer a { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <h1>Monitoring Platform</h1>
+      <p>Architecture overview and install guide for the backend, dashboard, and desktop apps.</p>
+      <a class="back" href="/">&larr; Back to portfolio</a>
+    </header>
+
+    <main>
+      <section id="architecture">
+        <h2>Architecture</h2>
+        <p>
+          A device-monitoring platform split into three independently deployable pieces: a backend
+          service cluster, a web dashboard, and a companion desktop app.
+        </p>
+        <div class="grid">
+          <div class="card">
+            <h3>Backend</h3>
+            <p class="muted">NestJS API, dedicated WebSocket service, and ingestion/cron workers.</p>
+            <ul>
+              <li>REST API (Swagger docs)</li>
+              <li>WebSocket service for live device status</li>
+              <li>Ingestion worker + cron worker (Redis, Postgres, MongoDB, ClickHouse)</li>
+              <li>Deployed as Docker images on AWS ECS, built and pushed via GitHub Actions with OIDC (no long-lived AWS keys)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Frontend dashboard</h3>
+            <p class="muted">React + Vite web app.</p>
+            <ul>
+              <li>Pair a device via a QR code</li>
+              <li>Live device list and status</li>
+              <li>Per-device real-time monitor view</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Desktop app</h3>
+            <p class="muted">Electron app reporting local system metrics (CPU, memory, disk, uptime).</p>
+            <ul>
+              <li>Packaged for Windows (NSIS installer) and Linux (AppImage)</li>
+              <li>Built and released via a tag-triggered GitHub Actions pipeline</li>
+              <li>Published to GitHub Releases and mirrored to S3</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="install">
+        <h2>Install the desktop app</h2>
+        <p class="muted">No app store &mdash; direct-download installers only. macOS isn't packaged yet.</p>
+
+        <div class="card">
+          <h3>Windows</h3>
+          <ol>
+            <li>
+              Download
+              <a href="https://github.com/mj-praba/monitoring-platform/releases/latest/download/System%20Monitor-Setup-win.exe">
+                System Monitor-Setup-win.exe
+              </a>
+            </li>
+            <li>Run the installer and follow the setup wizard.</li>
+            <li>
+              The installer isn't code-signed yet, so SmartScreen may warn about an unknown
+              publisher &mdash; choose <strong>More info &rarr; Run anyway</strong> to continue.
+            </li>
+          </ol>
+          <a class="button" href="https://github.com/mj-praba/monitoring-platform/releases/latest/download/System%20Monitor-Setup-win.exe">Download for Windows</a>
+        </div>
+
+        <div class="card">
+          <h3>Linux</h3>
+          <ol>
+            <li>
+              Download
+              <a href="https://github.com/mj-praba/monitoring-platform/releases/latest/download/System%20Monitor-Setup-linux.AppImage">
+                System Monitor-Setup-linux.AppImage
+              </a>
+            </li>
+            <li>Make it executable and run it:</li>
+          </ol>
+          <pre><code>chmod +x "System Monitor-Setup-linux.AppImage"
+./"System Monitor-Setup-linux.AppImage"</code></pre>
+          <a class="button" href="https://github.com/mj-praba/monitoring-platform/releases/latest/download/System%20Monitor-Setup-linux.AppImage">Download for Linux</a>
+        </div>
+      </section>
+
+      <section id="connect">
+        <h2>Connect the app</h2>
+        <p class="muted">
+          The desktop app currently runs standalone and reports metrics for the local machine only
+          &mdash; it doesn't connect to a dashboard account yet. Once device pairing is available,
+          the steps to link an installed desktop app to a device on the dashboard will be documented
+          here.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      Part of <a href="/">manoj-portfolio</a> &middot; source on
+      <a href="https://github.com/mj-praba/monitoring-platform">GitHub</a>
+    </footer>
+  </body>
+</html>
