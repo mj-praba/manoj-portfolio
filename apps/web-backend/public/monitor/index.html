@@ -41,6 +41,12 @@
         }
       }
       * { box-sizing: border-box; }
+      a {
+        color: var(--accent);
+        text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent);
+      }
+      a:visited { color: var(--accent); }
+      a:hover { text-decoration-color: var(--accent); }
       body {
         margin: 0;
         font-family: "Inter", system-ui, sans-serif;
