@@ -248,32 +248,6 @@ const en: ResumeData = {
       links: [{ label: 'Architecture & Install Docs', url: 'https://phoenix.is-a.dev/monitor' }],
       isPlaceholder: false,
     },
-    {
-      id: 'analytics-application',
-      name: 'Analytics Application — Case Study Coming Soon',
-      tagline: 'Full-stack, backend-heavy — telemetry analytics and reporting. Detailed write-up in progress.',
-      businessProblem: 'Full write-up in progress — check back soon.',
-      solution: 'Full write-up in progress — check back soon.',
-      myContribution: ['Write-up in progress.'],
-      technologies: [],
-      links: [],
-      isPlaceholder: true,
-      placeholderNote:
-        'This project card is a placeholder. A full case study (problem, solution, my contribution, and links) will be added here.',
-    },
-    {
-      id: 'admin-control-panel',
-      name: 'Admin Control Panel — Case Study Coming Soon',
-      tagline: 'Full-stack, backend-heavy — tenant, device, and access management console. Detailed write-up in progress.',
-      businessProblem: 'Full write-up in progress — check back soon.',
-      solution: 'Full write-up in progress — check back soon.',
-      myContribution: ['Write-up in progress.'],
-      technologies: [],
-      links: [],
-      isPlaceholder: true,
-      placeholderNote:
-        'This project card is a placeholder. A full case study (problem, solution, my contribution, and links) will be added here.',
-    },
   ],
 };
 
@@ -525,32 +499,6 @@ const de: ResumeData = {
       links: [{ label: 'Architektur- & Installationsdokumentation', url: 'https://phoenix.is-a.dev/monitor' }],
       isPlaceholder: false,
     },
-    {
-      id: 'analytics-application',
-      name: 'Analytics-Anwendung — Fallstudie folgt in Kürze',
-      tagline: 'Full-Stack, backend-lastig — Telemetrie-Analytics und Reporting. Ausführliche Beschreibung in Arbeit.',
-      businessProblem: 'Ausführliche Beschreibung in Arbeit — schauen Sie bald wieder vorbei.',
-      solution: 'Ausführliche Beschreibung in Arbeit — schauen Sie bald wieder vorbei.',
-      myContribution: ['Beschreibung in Arbeit.'],
-      technologies: [],
-      links: [],
-      isPlaceholder: true,
-      placeholderNote:
-        'Diese Projektkarte ist ein Platzhalter. Eine vollständige Fallstudie (Problem, Lösung, mein Beitrag und Links) wird hier ergänzt.',
-    },
-    {
-      id: 'admin-control-panel',
-      name: 'Admin-Kontrollzentrum — Fallstudie folgt in Kürze',
-      tagline: 'Full-Stack, backend-lastig — Konsole für Mandanten-, Geräte- und Zugriffsverwaltung. Ausführliche Beschreibung in Arbeit.',
-      businessProblem: 'Ausführliche Beschreibung in Arbeit — schauen Sie bald wieder vorbei.',
-      solution: 'Ausführliche Beschreibung in Arbeit — schauen Sie bald wieder vorbei.',
-      myContribution: ['Beschreibung in Arbeit.'],
-      technologies: [],
-      links: [],
-      isPlaceholder: true,
-      placeholderNote:
-        'Diese Projektkarte ist ein Platzhalter. Eine vollständige Fallstudie (Problem, Lösung, mein Beitrag und Links) wird hier ergänzt.',
-    },
   ],
 };
 
@@ -801,32 +749,6 @@ const fr: ResumeData = {
       ],
       links: [{ label: "Documentation d'architecture et d'installation", url: 'https://phoenix.is-a.dev/monitor' }],
       isPlaceholder: false,
-    },
-    {
-      id: 'analytics-application',
-      name: 'Application analytique — Étude de cas à venir',
-      tagline: 'Full-stack, à dominante backend — analytique et reporting de télémétrie. Rédaction complète en cours.',
-      businessProblem: 'Rédaction complète en cours — revenez bientôt.',
-      solution: 'Rédaction complète en cours — revenez bientôt.',
-      myContribution: ['Rédaction en cours.'],
-      technologies: [],
-      links: [],
-      isPlaceholder: true,
-      placeholderNote:
-        'Cette fiche projet est un espace réservé. Une étude de cas complète (problème, solution, ma contribution et liens) sera ajoutée ici.',
-    },
-    {
-      id: 'admin-control-panel',
-      name: "Panneau d'administration — Étude de cas à venir",
-      tagline: 'Full-stack, à dominante backend — console de gestion des tenants, appareils et accès. Rédaction complète en cours.',
-      businessProblem: 'Rédaction complète en cours — revenez bientôt.',
-      solution: 'Rédaction complète en cours — revenez bientôt.',
-      myContribution: ['Rédaction en cours.'],
-      technologies: [],
-      links: [],
-      isPlaceholder: true,
-      placeholderNote:
-        'Cette fiche projet est un espace réservé. Une étude de cas complète (problème, solution, ma contribution et liens) sera ajoutée ici.',
     },
   ],
 };
