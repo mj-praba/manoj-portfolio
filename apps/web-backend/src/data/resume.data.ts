@@ -217,6 +217,24 @@ const en: ResumeData = {
       links: [{ label: 'Architecture & Install Docs', url: 'https://phoenix.is-a.dev/monitor' }],
       isPlaceholder: false,
     },
+    {
+      id: 'support-chatbot',
+      name: 'Customer Support Chatbot on a Local LLM',
+      tagline: 'A NestJS chat API with a fixed support system prompt, built to run on a self-hosted Ollama model. Work in progress.',
+      businessProblem:
+        'Support teams want an assistant that answers routine customer questions without sending conversations to a third-party LLM provider, and without the model making up company policies.',
+      solution:
+        "A NestJS API exposes a single POST /api/chat endpoint. It validates the message and sends it to the model together with a fixed support system prompt that keeps answers short and on-topic, and tells the model to say when it doesn't know instead of inventing policy. Model access sits behind an OllamaService that uses the same message format as Ollama's /api/chat, so a self-hosted model can be plugged in without touching the controller or the prompt. A React chat UI calls the API through a Vite dev proxy. The Ollama call is currently a stub; wiring it up is the next step.",
+      myContribution: [
+        'Designed the request flow (controller → chat service → model client) so prompt handling and model access stay separate.',
+        'Wrote the support system prompt with rules against invented policies and off-topic answers.',
+        'Added input validation that returns 400 for missing or blank messages, covered by end-to-end tests with Vitest and Supertest.',
+        'Built the React chat UI with loading and error states and auto-scrolling message history.',
+      ],
+      technologies: ['NestJS', 'Node.js', 'TypeScript', 'React', 'Vite', 'Ollama', 'LLM', 'Vitest'],
+      links: [{ label: 'GitHub', url: 'https://github.com/mj-praba/support-chatbot' }],
+      isPlaceholder: false,
+    },
   ],
 };
 
@@ -437,6 +455,24 @@ const de: ResumeData = {
       links: [{ label: 'Architektur- & Installationsdokumentation', url: 'https://phoenix.is-a.dev/monitor' }],
       isPlaceholder: false,
     },
+    {
+      id: 'support-chatbot',
+      name: 'Kundensupport-Chatbot mit lokalem LLM',
+      tagline: 'Eine NestJS-Chat-API mit festem Support-Systemprompt, ausgelegt für ein selbst gehostetes Ollama-Modell. In Arbeit.',
+      businessProblem:
+        'Support-Teams wünschen sich einen Assistenten, der Routinefragen von Kunden beantwortet, ohne Gespräche an einen externen LLM-Anbieter zu senden und ohne dass das Modell Unternehmensrichtlinien erfindet.',
+      solution:
+        'Eine NestJS-API stellt einen einzigen Endpunkt POST /api/chat bereit. Sie validiert die Nachricht und sendet sie zusammen mit einem festen Support-Systemprompt an das Modell. Der Prompt hält die Antworten kurz und beim Thema und weist das Modell an, Unwissen offen zuzugeben, statt Richtlinien zu erfinden. Der Modellzugriff liegt hinter einem OllamaService, der dasselbe Nachrichtenformat wie Ollamas /api/chat verwendet, sodass ein selbst gehostetes Modell angebunden werden kann, ohne Controller oder Prompt zu ändern. Eine React-Chat-Oberfläche ruft die API über einen Vite-Dev-Proxy auf. Der Ollama-Aufruf ist derzeit ein Platzhalter; die Anbindung ist der nächste Schritt.',
+      myContribution: [
+        'Entwarf den Anfrageablauf (Controller → Chat-Service → Modell-Client), sodass Prompt-Verarbeitung und Modellzugriff getrennt bleiben.',
+        'Schrieb den Support-Systemprompt mit Regeln gegen erfundene Richtlinien und themenfremde Antworten.',
+        'Implementierte eine Eingabevalidierung, die bei fehlenden oder leeren Nachrichten 400 zurückgibt, abgedeckt durch End-to-End-Tests mit Vitest und Supertest.',
+        'Baute die React-Chat-Oberfläche mit Lade- und Fehlerzuständen sowie automatisch scrollendem Nachrichtenverlauf.',
+      ],
+      technologies: ['NestJS', 'Node.js', 'TypeScript', 'React', 'Vite', 'Ollama', 'LLM', 'Vitest'],
+      links: [{ label: 'GitHub', url: 'https://github.com/mj-praba/support-chatbot' }],
+      isPlaceholder: false,
+    },
   ],
 };
 
@@ -655,6 +691,24 @@ const fr: ResumeData = {
         'GitHub Actions',
       ],
       links: [{ label: "Documentation d'architecture et d'installation", url: 'https://phoenix.is-a.dev/monitor' }],
+      isPlaceholder: false,
+    },
+    {
+      id: 'support-chatbot',
+      name: 'Chatbot de support client sur un LLM local',
+      tagline: 'Une API de chat NestJS avec un prompt système de support fixe, conçue pour fonctionner avec un modèle Ollama auto-hébergé. En cours de développement.',
+      businessProblem:
+        "Les équipes de support veulent un assistant qui réponde aux questions courantes des clients sans envoyer les conversations à un fournisseur de LLM tiers, et sans que le modèle invente des politiques de l'entreprise.",
+      solution:
+        "Une API NestJS expose un seul endpoint POST /api/chat. Elle valide le message et l'envoie au modèle avec un prompt système de support fixe qui garde les réponses courtes et pertinentes, et demande au modèle d'admettre qu'il ne sait pas plutôt que d'inventer une politique. L'accès au modèle passe par un OllamaService qui utilise le même format de messages que /api/chat d'Ollama, ce qui permet de brancher un modèle auto-hébergé sans modifier le contrôleur ni le prompt. Une interface de chat React appelle l'API via un proxy de développement Vite. L'appel à Ollama est pour l'instant simulé ; son branchement est la prochaine étape.",
+      myContribution: [
+        "A conçu le flux des requêtes (contrôleur → service de chat → client du modèle) afin de séparer la gestion du prompt de l'accès au modèle.",
+        'A rédigé le prompt système de support, avec des règles contre les politiques inventées et les réponses hors sujet.',
+        'A ajouté une validation des entrées qui renvoie 400 pour un message absent ou vide, couverte par des tests de bout en bout avec Vitest et Supertest.',
+        "A construit l'interface de chat React avec états de chargement et d'erreur et un historique des messages à défilement automatique.",
+      ],
+      technologies: ['NestJS', 'Node.js', 'TypeScript', 'React', 'Vite', 'Ollama', 'LLM', 'Vitest'],
+      links: [{ label: 'GitHub', url: 'https://github.com/mj-praba/support-chatbot' }],
       isPlaceholder: false,
     },
   ],
